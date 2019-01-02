@@ -1,0 +1,19 @@
+[package]
+name = "neko"
+description = "Standalone binary to render parameterized template files"
+readme = "README.md"
+version = "0.1.0"
+edition = "2018"
+categories = ["command-line-utilities"]
+license = "MIT"
+authors = ["Dan Herrera <sonarius@shew.io>"]
+repository = "https://github.com/loksonarius/neko"
+
+[dependencies]
+failure = "0.1"
+glob = "0.2"
+log = "0.4"
+loggerv = "0.7"
+serde_json = "1.0"
+tera = "0.11"
+structopt = "0.2"
