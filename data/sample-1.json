@@ -1,0 +1,13 @@
+{
+  "header": "My Sample file is neat",
+  "sample": 1,
+  "entries": [
+    {
+      "song": "all star",
+      "artist": "smashmouth"
+    }
+  ],
+  "metadata": {
+    "foo": "I'm supposed to be overriden"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "header": "My Sample file is really neat",
+  "sample": 2,
+  "metadata": {
+    "foo": "overriden",
+    "bar": "super value!"
+  }
+}
