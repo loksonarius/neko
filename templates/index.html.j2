@@ -2,5 +2,6 @@
   <h1>{{ header }}</h1>
   <p>{{ sample }}</p>
   <hr/>
-  <p>{{ metadata }}</p>
+  <p>{{ entries | json_encode }}</p>
+  <p>{{ metadata | json_encode }}</p>
 </div>
