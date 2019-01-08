@@ -68,9 +68,6 @@ ARGS:
 - Refactor error handling code
   - Maybe custom errors that include causes
   - Errors in the lib file should just trickle up to the handler func
-- Try splitting up the structopt stuff from the main function
-  - Maybe I can make this a YAML-declared thing with clap alone
-  - Not sure if this goes against standard Rust-eze
 - Add unit tests for functions
   - I might redo the handler after the error handling -- that'll give a good
     starting point to try to TDD this
@@ -82,8 +79,6 @@ ARGS:
   - Add sample usage patterns and such in a samples directory
 - Figure out if tera reports any errors beyond what I've seen
   - There's really no good way of telling why any template may fail to render
-- Implement the output flag
-  - I think this can be done with a closure in the top of the handler
 - Use the POC version of this thing to uncover oddities
   - Dog-fooding this for some personal projects
   - Still not sure that the interface is the nicest
