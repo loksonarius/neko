@@ -24,13 +24,8 @@ pub fn parse_data_glob(data_glob: &str) -> Result<Value, Error> {
     for file in glob(data_glob).unwrap() {
         match file {
             Ok(path) => {
-                match parse_data_file(&path) {
-                    Ok(d) => data = merge_data(&data, &d).unwrap(),
-                    Err(e) => {
-                        error!("Failed to parse data file: {}", path.as_path().display());
-                        error!("Got the following error: {}", e);
-                    }
-                };
+                let read_data = parse_data_file(&path)?;
+                data = merge_data(&data, &read_data).unwrap()
             },
             Err(e) => {
                 warn!("Data path matched but was unreadable -- got error: {}", e);
