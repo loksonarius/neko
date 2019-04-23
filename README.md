@@ -2,90 +2,85 @@
 
 _Render Jinja 2 templates using a standalone binary_
 
-This project is still heavily in-progress -- the README and documentation will
-come _after_ the POC. Most of the usage is already documented in the binary
-itself, try running `neko render` or `neko data' with `--help` to see the
-output as below:
+:warning:
+This project is still _heavily_ in flux. While I still encourage and
+heavily appreciate usage this tool, I cannot currently guarantee functionality.
+That said, if you find bugs and report them to me, I will personally prioritize
+addressing them! :heart:
+:warning:
 
-```
-neko-render 0.1.0
-Dan Herrera <sonarius@shew.io>
-Renders a given Jinja 2 formatted template
+## Quick Start
 
-The given file path will be parsed and processed after loading in all the given data files and values. This data context
-will be used to evaluate variables and some expressions when rendering template files.
+Start templating with Neko today by running:
 
-USAGE:
-    neko render [OPTIONS] <target_template>
-
-FLAGS:
-    -h, --help
-            Prints help information
-
-    -V, --version
-            Prints version information
-
-
-OPTIONS:
-    -D, --data <data_glob>
-            Path glob to match for data input files to use when rendering
-
-            This argument should be passed as a string, and so most shells may require wrapping this in quotes. This
-            glob may be something like 'data/**/*.json', which would load all JSON object files under the 'data'
-            directory and all subdirectories. It may also be a single file path like 'template-config.json' which loads
-            only a single JSON object file. [default: data/**/*.json]
-    -o, --output <output_file>
-            Path of file where rendered output should be written to -- defaults to stdout
-
-            If this path includes a directory without write access or to a non-existent directory, the file will fail to
-            be created. If this is a path to a file that already exists, then that file will be overwritten with the
-            output of this command.
-    -T, --templates <templates_glob>
-            Path glob to match for template input files to render
-
-            This argument should be passed as a string, and so most shells may require wrapping this in quotes. This
-            glob may be something like 'templates/**/*.j2', which would load all Jinja 2 template files under the
-            'templates' directory and all subdirectories. It may also be a single file path like 'template.j2' which
-            loads only a single Jinja 2 template. The reason this argument is a glob and not a single file path is that
-            Jinja 2 contexts' include the concept of macros and subtemplates. This means that a template context may
-            require more files than just the single source. For more info, see
-            http://jinja.pocoo.org/docs/2.10/templates/#template-inheritance and
-            http://jinja.pocoo.org/docs/2.10/templates/#macros. [default: templates/**/*.j2]
-
-ARGS:
-    <target_template>
-            Target template to render
-
-            This is the file name of the specific template you'd like rendered. While the 'templates' option is about
-            specifying the template hierarchy files that include macros and functions and all other sorts of dependent
-            templating structures, this option specifically chooses a template who's contents should be rendered. For
-            example, if our templates' glob includes the 'index.html.j2' template, then we pass 'index.html.j2' as the
-
+```bash
+neko help
 ```
 
-## Work to Do
+There's a pretty decent amount of documentation built into the tool for
+reference, so please use it if you need to quickly confirm something!
 
-- Refactor error handling code
-  - Maybe custom errors that include causes
-  - Errors in the lib file should just trickle up to the handler func
-- Add unit tests for functions
-  - I might redo the handler after the error handling -- that'll give a good
-    starting point to try to TDD this
-  - By mocking some sample NekoApp struct for the options, I think I can add
-    some testing that mocks the behavior beyond the library functions. Not sure
-    about that though.
-- Flesh out usage docs
-  - Add full README
-  - Add sample usage patterns and such in a samples directory
-- Figure out if tera reports any errors beyond what I've seen
-  - There's really no good way of telling why any template may fail to render
-- Use the POC version of this thing to uncover oddities
-  - Dog-fooding this for some personal projects
-  - Still not sure that the interface is the nicest
-- Clean up project
-  - Add as much info to Cargo.toml file
-  - Add license and contribution guidelines
-  - Set up Travis or Circle CI pipeline to build binary for multiple platforms
-  - Maybe add binaries to OS distribution repos
+## Usage
+
+### Basic Concepts
+
+`neko` renders templates using the Jinja2 engine. This engine has two primary
+concepts to understand for usage:
+
+| Concept | Definition |
+| --- | --- |
+| Context | The body of variables that can be referenced from within templates |
+| Template | Document defining formatting of variables, content, and other templates|
+
+The Context in `neko` is built by aggregating and merging all `.json` files in a
+given `data` directory.
+
+The Template in `neko` is the specific file that will be rendered after loading
+all base templates, filters, and macros.
+
+These concepts are pretty native to Jinja2, and `neko` doesn't really abstract
+them much. For more info on these, please refer to
+[Jinja2's docs](http://jinja.pocoo.org/).
+
+### File Setup
+
+`neko` has some basic expectation of default usage. Primarily, it expects a
+directory structure like the one below:
+
+```
+./
+├── data
+│   ├── base-data.json
+│   ├── sample-data.json
+│   └── extra-data.json
+└── templates
+    ├── basic-document.txt.j2
+    └── header-content-template.j2
+```
+
+The given data and templates directory will be fully traversed for `json` and
+`j2` files respectively, so feel free to structure as needed for your hierarchy.
+
+### Rendering a Template
+
+```bash
+neko render template-file-name.j2
+```
+
+The `render` command expects the full file name of the template that should be
+rendered from within the 'templates' directory. The result will be printed
+directly to `stdout`.
+
+### Debugging the Context
+
+```bash
+neko data
+```
+
+It can be helpful when multiple files are involved to see what context was used
+to generate templates. Instead of making a template that prints out the entire
+structure of the data context, `neko` provides the convenience sub-command
+`data`, which will print out the entire data context in a JSON object after
+fully merging all found files.
 
 [:cat:](https://github.com/loksonarius/neko)
