@@ -6,7 +6,7 @@
 
 - [Context](#context)
 - [Helpful Links](#helpful-links)
-- [Issues](#issues)
+- [Fixes](#fixes)
 - [Suggestions](#suggestions)
 - [Requests](#requests)
 - [Pull Requests](#pull-requests)
@@ -27,12 +27,12 @@ when it comes to projects. :yum:
 - [Serde Crate Docs](https://docs.serde.rs/serde/)
 - [Structopt Crate Docs](https://docs.rs/structopt/0.2.15/structopt/)
 
-## Issues
+## Fixes
 
 _bugs, errors, crashes_
 
-When opening an issue, any sample data or templates that could help reproduce
-whatever you're running into if it's a bug or such.
+When opening a fix issue, any sample data or templates that could help reproduce
+whatever you're running into would be seriously appreciated.
 
 ## Suggestions
 
@@ -40,15 +40,16 @@ _roadmap, novelty, big items_
 
 For suggestions on brand new functionality, it'll be be great to know what
 benefits you expect from that feature. This can be practical, novel, or humorous
--- I'll take any! :smile:
+-- any work! :smile:
 
 # Requests
 
 _features, asks, small items_
 
-Requests are very similar to [suggestions](#suggestions), and I'd expect similar
-information, though I particularly request information on how `Neko` is failing
-to meet your use case.
+Requests are very similar to [suggestions](#suggestions), but focus on small items
+that aren't broken. Think of these as improvements that can be made to the system.
+Requests should explain expected functionality thoroughly and potentially offer
+solutions and alternatives if possible.
 
 ## Pull Requests
 
