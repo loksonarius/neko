@@ -1,13 +1,14 @@
 # neko
 
+[![Build Status](https://travis-ci.org/loksonarius/neko.svg?branch=master)](https://travis-ci.org/loksonarius/neko)
+
 _Render Jinja 2 templates using a standalone binary_
 
-:warning:
+:warning: HEADS UP! :warning:
 This project is still _heavily_ in flux. While I still encourage and
 heavily appreciate usage this tool, I cannot currently guarantee functionality.
 That said, if you find bugs and report them to me, I will personally prioritize
 addressing them! :heart:
-:warning:
 
 ## Quick Start
 
@@ -82,5 +83,17 @@ to generate templates. Instead of making a template that prints out the entire
 structure of the data context, `neko` provides the convenience sub-command
 `data`, which will print out the entire data context in a JSON object after
 fully merging all found files.
+
+### Development
+
+`neko` relies mainly on the `structopt`, `serde`, and `tera` crates, and
+compiles using the default Rust toolchain. Nothing terribly fancy here. There's
+a Travis CI pipeline set up to compile to multiple target OS and architectures,
+and that'll run for any commits to `master` and `dev`, as well as populate
+releases for tagged commits to `master`.
+
+There's currently no project management, just check the [todo's](TODO.md) for
+info on what to work on, and the [contribution guide](CONTRIBUTING.md) for info
+on improving `neko`!
 
 [:cat:](https://github.com/loksonarius/neko)
