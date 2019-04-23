@@ -17,6 +17,7 @@ main() {
   #
   # cross run --target $TARGET
   # cross run --target $TARGET --release
+  echo 'Skipping tests for now...'
 }
 
 # we don't run the "test phase" when doing deploys
