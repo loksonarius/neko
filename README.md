@@ -4,7 +4,7 @@
 
 _Render Jinja 2 templates using a standalone binary_
 
-:warning: HEADS UP! :warning:
+## :warning: HEADS UP! :warning:
 This project is still _heavily_ in flux. While I still encourage and
 heavily appreciate usage this tool, I cannot currently guarantee functionality.
 That said, if you find bugs and report them to me, I will personally prioritize
