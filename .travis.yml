@@ -82,6 +82,7 @@ branches:
     # release tags
     - /^v\d+\.\d+\.\d+.*$/
     - master
+    - dev
 
 notifications:
   email:
