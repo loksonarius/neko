@@ -6,9 +6,9 @@ _Render Jinja 2 templates using a standalone binary_
 
 ## :warning: HEADS UP! :warning:
 This project is still _heavily_ in flux. While I still encourage and
-heavily appreciate usage this tool, I cannot currently guarantee functionality.
-That said, if you find bugs and report them to me, I will personally prioritize
-addressing them! :heart:
+heavily appreciate usage of this tool, I cannot currently guarantee any
+functionality. That said, if you find bugs and report them to me, I'll
+personally prioritize addressing them! :heart:
 
 ## Quick Start
 
@@ -25,8 +25,8 @@ reference, so please use it if you need to quickly confirm something!
 
 ### Basic Concepts
 
-`neko` renders templates using the Jinja2 engine. This engine has two primary
-concepts to understand for usage:
+`neko` renders templates using the Jinja2 engine. This engine has two concepts
+that are relevant for usage:
 
 | Concept | Definition |
 | --- | --- |
@@ -34,7 +34,7 @@ concepts to understand for usage:
 | Template | Document defining formatting of variables, content, and other templates|
 
 The Context in `neko` is built by aggregating and merging all `.json` files in a
-given `data` directory.
+given data directory.
 
 The Template in `neko` is the specific file that will be rendered after loading
 all base templates, filters, and macros.
@@ -69,7 +69,7 @@ neko render template-file-name.j2
 ```
 
 The `render` command expects the full file name of the template that should be
-rendered from within the 'templates' directory. The result will be printed
+rendered from within the templates directory. The result will be printed
 directly to `stdout`.
 
 ### Debugging the Context
